@@ -9,15 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Modather's Portfolio"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.menu),
-          )
-        ],
-      ),
+      appBar: const DynamicAppBar(title: "Modather's Portfolio"),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
         children: [
@@ -25,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             "Hey, I'm Modather Ali",
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          const Text("A Mobile Applications Developer"),
+          const Text("An Applications Developer"),
           const SizedBox(width: double.infinity),
           const ProjectsBuilder(),
           const SizedBox(height: 20),

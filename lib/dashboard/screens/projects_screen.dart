@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/widgets.dart';
+import 'screens.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({super.key});
@@ -10,7 +12,10 @@ class ProjectsScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(CupertinoPageRoute(
+              builder: (context) => const AddProjectScreen()));
+        },
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(10),

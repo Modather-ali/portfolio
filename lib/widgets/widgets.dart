@@ -1,4 +1,5 @@
 export 'contact_button.dart';
+export 'contact_me_builder.dart';
 export 'custom_drawer.dart';
 export 'drawer_item.dart';
 export 'dynamic_app_bar.dart';

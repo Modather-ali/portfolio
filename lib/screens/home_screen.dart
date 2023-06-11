@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/widgets.dart';
 
@@ -20,34 +19,7 @@ class HomeScreen extends StatelessWidget {
           const Text("An Applications Developer"),
           const SizedBox(width: double.infinity),
           const ProjectsBuilder(),
-          const SizedBox(height: 20),
-          const Text("Contact Me"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ContactButton(
-                onPressed: () {},
-                icon: FontAwesomeIcons.github,
-              ),
-              ContactButton(
-                onPressed: () {},
-                icon: Icons.email,
-              ),
-              ContactButton(
-                onPressed: () {},
-                icon: FontAwesomeIcons.whatsapp,
-              ),
-              ContactButton(
-                onPressed: () {},
-                icon: FontAwesomeIcons.linkedinIn,
-              ),
-              ContactButton(
-                onPressed: () {},
-                icon: FontAwesomeIcons.telegram,
-              ),
-            ],
-          ),
-          const SizedBox(height: 20)
+          const ContactMeBuilder(),
         ],
       ),
     );

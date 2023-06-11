@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets.dart';
@@ -10,7 +11,7 @@ class AboutMeScreen extends StatelessWidget {
     return DynamicAppBar(
       title: 'About Me',
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 25),
+        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -38,28 +39,34 @@ class AboutMeScreen extends StatelessWidget {
               ),
             ],
           ),
+          Center(
+            child: ElevatedButton.icon(
+              onPressed: () {},
+              icon: const Icon(CupertinoIcons.doc_text_viewfinder),
+              label: const Text("View My Resume"),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: Text(
               " Hi!, I am Modather Ali, who has a strong passion and interest for design and developing Mobile Apps, I have +2 years of experience dealing with Flutter framework, And I'm passionate about helping people own their own apps.",
               style: Theme.of(context).textTheme.labelLarge,
               // textAlign: TextAlign.center,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              "My Skills",
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Colors.blue,
-                  ),
-            ),
+          Text(
+            "My Skills",
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Colors.blue,
+                ),
           ),
+          const SizedBox(height: 10),
           const SkillWidget(title: 'Flutter', value: 95),
           const SkillWidget(title: 'Dart', value: 90),
           const SkillWidget(title: 'Firebase', value: 75),
           const SkillWidget(title: 'Git', value: 80),
           const SkillWidget(title: 'APIs', value: 90),
+          const ContactMeBuilder(),
         ],
       ),
     );

@@ -24,15 +24,15 @@ class CustomDrawer extends StatelessWidget {
             ),
             DrawerItem(
               title: "About Me",
-              iconData: FontAwesomeIcons.person,
+              iconData: Icons.info_outline,
               onTap: () {
                 _navigateTo(context, const AboutMeScreen());
               },
             ),
-            DrawerItem(
-              title: "Contact Me",
-              iconData: Icons.contact_page,
-              onTap: () {},
+            const Spacer(),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ContactMeBuilder(),
             ),
           ],
         ),

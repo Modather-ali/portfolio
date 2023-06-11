@@ -8,8 +8,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const DynamicAppBar(title: "Modather's Portfolio"),
+    return DynamicAppBar(
+      title: "Modather's Portfolio",
       body: ListView(
         padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
         children: [

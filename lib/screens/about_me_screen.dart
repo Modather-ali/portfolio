@@ -7,10 +7,8 @@ class AboutMeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const DynamicAppBar(
-        title: 'About Me',
-      ),
+    return DynamicAppBar(
+      title: 'About Me',
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 25),
         children: [

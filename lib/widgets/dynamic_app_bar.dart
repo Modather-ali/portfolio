@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class DynamicAppBar extends StatelessWidget with PreferredSizeWidget {
+import 'widgets.dart';
+
+class DynamicAppBar extends StatelessWidget {
   final String title;
-  const DynamicAppBar({super.key, required this.title});
+  final Widget body;
+  const DynamicAppBar({super.key, required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(title),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        )
-      ],
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: body,
+        drawer: const CustomDrawer());
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(50);
 }

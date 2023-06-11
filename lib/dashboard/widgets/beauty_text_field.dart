@@ -32,10 +32,16 @@ class BeautyTextField extends StatelessWidget {
       child: TextFormField(
         onChanged: onChanged,
         controller: controller,
-        validator: validator,
+        validator: (text) {
+          if (text!.isEmpty) {
+            return "This Field is required";
+          }
+          return null;
+        },
         scrollPadding: const EdgeInsets.all(50),
         keyboardType: textInputType,
         textInputAction: textInputAction,
+        maxLines: null,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           focusedBorder: OutlineInputBorder(

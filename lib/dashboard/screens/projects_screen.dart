@@ -21,7 +21,6 @@ class ProjectsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         itemCount: 3,
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return const ProjectContainer();
         },

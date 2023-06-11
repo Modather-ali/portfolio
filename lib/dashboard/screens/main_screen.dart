@@ -21,10 +21,10 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
-            const ProjectsScreen(),
-            Container(),
+            ProjectsScreen(),
+            ContactInfoScreen(),
           ],
         ),
       ),

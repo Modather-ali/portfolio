@@ -11,7 +11,7 @@ class BeautyTextField extends StatelessWidget {
     this.onChanged,
     this.prefixIcon,
     this.suffixIcon,
-    this.obscureText = false,
+    this.enabled = true,
     this.controller,
   }) : super(key: key);
 
@@ -22,7 +22,7 @@ class BeautyTextField extends StatelessWidget {
   void Function(String)? onChanged;
   Widget? prefixIcon;
   Widget? suffixIcon;
-  bool obscureText;
+  bool enabled;
   TextEditingController? controller;
 
   @override
@@ -55,8 +55,9 @@ class BeautyTextField extends StatelessWidget {
           label: Text(fieldName),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
+          enabled: enabled,
         ),
-        obscureText: obscureText,
+        // obscureText: enabled,
       ),
     );
   }

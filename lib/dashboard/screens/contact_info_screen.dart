@@ -17,6 +17,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 7),
       children: const [
         ContactUrlField(
+          fieldName: 'MyPhoto',
+          prefixIcon: Icons.photo_camera_front_outlined,
+        ),
+        ContactUrlField(
           fieldName: 'GitHub',
           prefixIcon: FontAwesomeIcons.github,
         ),
@@ -36,6 +40,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
           fieldName: 'Telegram',
           prefixIcon: FontAwesomeIcons.telegram,
         ),
+       
       ],
     );
   }

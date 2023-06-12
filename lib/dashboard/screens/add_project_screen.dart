@@ -13,6 +13,18 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
   int _selectedCoverImage = 0;
   final List<String> _projectImages = [];
   final List<String> _selectedSkills = [];
+  final List<String> _allSkills = [
+    'Flutter',
+    'Dart',
+    'Firebase',
+    'Git',
+    'State Management',
+    'API',
+    'SQL Lite',
+    'Php',
+    'Google Maps',
+    'Payment',
+  ];
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _name = TextEditingController();
@@ -111,15 +123,15 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
             ),
             Wrap(
               children: [
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < _allSkills.length; i++)
                   ChoiceSkillChip(
-                    skillName: 'skill $i',
-                    selected: _selectedSkills.contains('skill $i'),
+                    skillName: _allSkills[i],
+                    selected: _selectedSkills.contains(_allSkills[i]),
                     onSelected: (p0) {
-                      if (_selectedSkills.contains('skill $i')) {
-                        setState(() => _selectedSkills.remove('skill $i'));
+                      if (_selectedSkills.contains(_allSkills[i])) {
+                        setState(() => _selectedSkills.remove(_allSkills[i]));
                       } else {
-                        setState(() => _selectedSkills.add('skill $i'));
+                        setState(() => _selectedSkills.add(_allSkills[i]));
                       }
                     },
                   )

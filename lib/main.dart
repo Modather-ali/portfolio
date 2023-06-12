@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(), 
+      home: const MainScreen(), 
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets.dart';
@@ -28,14 +29,21 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
             },
             children: List.generate(
               5,
-              (index) => AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.amber,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/test_img.jpg'),
-                      fit: BoxFit.cover,
+              (index) => InkWell(
+                onTap: () {
+                  Navigator.of(context).push(CupertinoPageRoute(
+                    builder: (context) =>
+                        ImageViewer(currentImageIndex: _imageIndex),
+                  ));
+                },
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/test_img.jpg'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

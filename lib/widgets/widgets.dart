@@ -1,8 +1,11 @@
+export 'cache_network_image.dart';
+export 'animated_dots.dart';
 export 'contact_button.dart';
 export 'contact_me_builder.dart';
 export 'custom_drawer.dart';
 export 'drawer_item.dart';
 export 'dynamic_app_bar.dart';
 export 'project_container.dart';
+export 'project_images_builder.dart';
 export 'projects_builder.dart';
 export 'skill_widget.dart';

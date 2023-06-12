@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
+import '../screens/screens.dart';
 import 'project_container.dart';
 
 class ProjectsBuilder extends StatelessWidget {
@@ -12,7 +13,12 @@ class ProjectsBuilder extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return const ProjectContainer();
+        return ProjectContainer(
+          onTap: () {
+            Navigator.of(context).push(CupertinoPageRoute(
+                builder: (context) => const ProjectDetailsScreen()));
+          },
+        );
       },
     );
   }

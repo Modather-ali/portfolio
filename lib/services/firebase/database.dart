@@ -2,24 +2,21 @@ import '../../models/models.dart';
 import '../../shared/packages.dart';
 
 class FirebaseDatabase {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final CollectionReference<Map<String, dynamic>> _projects =
       FirebaseFirestore.instance.collection('projects');
 
-  Future<List<Map<String, dynamic>>> getProjectsData(
-      String collectionID) async {
-    List<Map<String, dynamic>> listOfData = [];
+  Future<List<Project>> getProjectsData() async {
+    List<Project> listOfProjects = [];
     try {
-      QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await _firestore.collection(collectionID).get();
+      QuerySnapshot<Map<String, dynamic>> querySnapshot = await _projects.get();
 
       for (var element in querySnapshot.docs) {
-        listOfData.add(element.data());
+        listOfProjects.add(Project.fromJson(element.data()));
       }
     } catch (e) {
       print("error in get date: $e");
     }
-    return listOfData;
+    return listOfProjects;
   }
 
   Future<bool> addNewProject(Project project) async {

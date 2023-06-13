@@ -1,32 +1,33 @@
 import '../../shared/packages.dart';
 
 class FireStorage {
+  final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
   Future<String> loadFileToFireStorage({
     required String localFilePath,
     required String folderName,
   }) async {
-    String landFileLink = '';
-    File file = File(localFilePath);
+    String loadedFileUrl = '';
+
     try {
+      File file = File(localFilePath);
       String fileName = basename(file.path);
 
-      Reference storageRef =
-          FirebaseStorage.instance.ref(folderName).child(fileName);
+      Reference storageRef = _firebaseStorage.ref(folderName).child(fileName);
 
       await storageRef.putFile(file);
-      landFileLink = await storageRef.getDownloadURL();
+      loadedFileUrl = await storageRef.getDownloadURL();
     } catch (e) {
       if (kDebugMode) {
-        print('Error in load image: $e');
+        print('Error in load file: $e');
       }
     }
 
-    return landFileLink;
+    return loadedFileUrl;
   }
 
   Future<bool> deleteFileFromFireStorage({required String fileURL}) async {
     try {
-      await FirebaseStorage.instance.refFromURL(fileURL).delete();
+      await _firebaseStorage.refFromURL(fileURL).delete();
       return true;
     } catch (e) {
       if (kDebugMode) {

@@ -6,3 +6,5 @@ export 'package:firebase_storage/firebase_storage.dart';
 export 'package:flutter/foundation.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:provider/provider.dart';
+export 'package:image_picker/image_picker.dart';
+export 'package:permission_handler/permission_handler.dart';

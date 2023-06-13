@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/shared/packages.dart';
 
 import '../../../widgets/widgets.dart';
+import '../../models/models.dart';
+import '../../providers/providers.dart';
 import '../screens.dart';
 
 class ProjectsScreen extends StatelessWidget {
@@ -9,6 +12,7 @@ class ProjectsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Project> projects = context.read<ProjectProvider>().projects;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
@@ -19,10 +23,12 @@ class ProjectsScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(10),
-        itemCount: 3,
+        itemCount: projects.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return const ProjectContainer();
+          return ProjectContainer(
+            project: projects[index],
+          );
         },
       ),
     );

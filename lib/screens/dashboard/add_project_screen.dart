@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/providers/providers.dart';
 
+import '../../models/models.dart';
+import '../../services/servers.dart';
+import '../../shared/packages.dart';
 import '../../widgets/widgets.dart';
 
 class AddProjectScreen extends StatefulWidget {
@@ -10,9 +14,13 @@ class AddProjectScreen extends StatefulWidget {
 }
 
 class _AddProjectScreenState extends State<AddProjectScreen> {
+  late Project _project;
   int _selectedCoverImage = 0;
   final List<String> _projectImages = [];
   final List<String> _selectedSkills = [];
+  final FirebaseDatabase _firebaseDatabase = FirebaseDatabase();
+  final FireStorage _fireStorage = FireStorage();
+
   final List<String> _allSkills = [
     'Flutter',
     'Dart',
@@ -31,8 +39,11 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
   final TextEditingController _desc = TextEditingController();
   final TextEditingController _codeUrl = TextEditingController();
   final TextEditingController _appUrl = TextEditingController();
+
+  late ProjectProvider _projectProvider;
   @override
   Widget build(BuildContext context) {
+    _projectProvider = Provider.of<ProjectProvider>(context);
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -67,29 +78,29 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                       },
                       image: image,
                       onDelete: () async {
-                        // if (!image.startsWith('http')) {
-                        //   await _firebaseDatabase.deleteFileFromFireStorage(
-                        //       fileURL: image);
-                        // }
-                        // _productImages.remove(image);
-                        // _selectedCoverImage = 0;
+                        if (!image.startsWith('http')) {
+                          await _fireStorage.deleteFileFromFireStorage(
+                              fileURL: image);
+                        }
+                        _projectImages.remove(image);
+                        _selectedCoverImage = 0;
                         setState(() {});
                       },
                     ),
                   ImagePickerButton(
                     onTap: () async {
-                      // if (await Permission.storage.request().isGranted) {
-                      //   final XFile? selectedImage =
-                      //       await ImagePicker().pickImage(
-                      //     source: ImageSource.gallery,
-                      //     imageQuality: 25,
-                      //   );
-                      //   if (selectedImage != null) {
-                      //     setState(() {
-                      //       _productImages.add(selectedImage.path);
-                      //     });
-                      //   }
-                      // }
+                      if (await Permission.storage.request().isGranted) {
+                        final XFile? selectedImage =
+                            await ImagePicker().pickImage(
+                          source: ImageSource.gallery,
+                          imageQuality: 75,
+                        );
+                        if (selectedImage != null) {
+                          setState(() {
+                            _projectImages.add(selectedImage.path);
+                          });
+                        }
+                      }
                     },
                   ),
                 ],
@@ -129,10 +140,11 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                     selected: _selectedSkills.contains(_allSkills[i]),
                     onSelected: (p0) {
                       if (_selectedSkills.contains(_allSkills[i])) {
-                        setState(() => _selectedSkills.remove(_allSkills[i]));
+                        _selectedSkills.remove(_allSkills[i]);
                       } else {
-                        setState(() => _selectedSkills.add(_allSkills[i]));
+                        _selectedSkills.add(_allSkills[i]);
                       }
+                      setState(() {});
                     },
                   )
               ],
@@ -144,6 +156,17 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
   }
 
   Future<void> _onSave() async {
-    _formKey.currentState!.validate();
+    if (_formKey.currentState!.validate()) {
+      _project = Project(
+        id: 'project-${_name.text.hashCode}-${_desc.text.hashCode}',
+        name: _name.text,
+        description: _desc.text,
+        codeUrl: _codeUrl.text,
+        appUrl: _appUrl.text,
+        images: _projectImages,
+        usedSkills: _selectedSkills,
+      );
+      _firebaseDatabase.addNewProject(_project);
+    }
   }
 }

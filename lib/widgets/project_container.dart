@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
+
 class ProjectContainer extends StatelessWidget {
   final void Function()? onTap;
-  const ProjectContainer({super.key, this.onTap});
+  final Project project;
+  const ProjectContainer({super.key, this.onTap, required this.project});
 
   @override
   Widget build(BuildContext context) {
-    //details
     return Padding(
       padding: const EdgeInsets.only(top: 15),
       child: InkWell(

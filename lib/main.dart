@@ -3,7 +3,7 @@ import 'dashboard/screens/screens.dart';
 import 'screens/screens.dart';
 
 void main() {
-    ErrorWidget.builder = (details) {
+  ErrorWidget.builder = (details) {
     return Container(
       color: Colors.grey,
       alignment: Alignment.center,
@@ -11,8 +11,9 @@ void main() {
         margin: const EdgeInsets.all(15),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text('Error:\n${details.exception}',
-          style: TextStyle(fontSize: 18),
+          child: Text(
+            'Error:\n${details.exception}',
+            style: const TextStyle(fontSize: 18),
           ),
         ),
       ),
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreen(), 
+      home: const HomeScreen(),
     );
   }
 }

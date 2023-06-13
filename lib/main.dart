@@ -1,7 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'providers/providers.dart';
 import 'screens/screens.dart';
+import 'shared/packages.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  await Firebase.initializeApp();
   ErrorWidget.builder = (details) {
     return Container(
       color: Colors.grey,
@@ -26,13 +36,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Modather\'s Portfolio ',
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProjectProvider())
+      ],
+      child: MaterialApp(
+        title: 'Modather\'s Portfolio',
+        theme: ThemeData(
+          useMaterial3: true,
+          primarySwatch: Colors.blue,
+        ),
+        home: Consumer<ProjectProvider>(builder: (_, projectProvider, child) {
+          return FutureBuilder(
+            future: projectProvider.init(),
+            builder: (_, asyncSnapshot) {
+              // if (asyncSnapshot.hasData) {
+              return const MainScreen();
+              // }
+              // return const Center(child: CircularProgressIndicator());
+            },
+          );
+        }),
       ),
-      home: const MainScreen(),
     );
   }
 }

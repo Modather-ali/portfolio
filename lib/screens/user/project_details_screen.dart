@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets.dart';
+import '../../widgets/widgets.dart';
 
 class ProjectDetailsScreen extends StatefulWidget {
   const ProjectDetailsScreen({super.key});

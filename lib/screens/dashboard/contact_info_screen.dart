@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../widgets/widgets.dart';
+import '../../widgets/widgets.dart';
 
 class ContactInfoScreen extends StatefulWidget {
   const ContactInfoScreen({super.key});
@@ -40,7 +40,6 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
           fieldName: 'Telegram',
           prefixIcon: FontAwesomeIcons.telegram,
         ),
-       
       ],
     );
   }

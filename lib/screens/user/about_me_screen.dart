@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets.dart';
+import '../../widgets/widgets.dart';
 
 class AboutMeScreen extends StatelessWidget {
   const AboutMeScreen({super.key});

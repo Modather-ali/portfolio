@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1034797458647",
+    "project_id": "modather-s-portfolio",
+    "storage_bucket": "modather-s-portfolio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034797458647:android:63c063dfc5d80858477c92",
+        "android_client_info": {
+          "package_name": "dev.modather.portfolio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034797458647-tido51b0803a5l95or4f9fn5uo2720l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYR4IANLUjt3LCYXMUe-vur8uTUeGenB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034797458647-tido51b0803a5l95or4f9fn5uo2720l5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

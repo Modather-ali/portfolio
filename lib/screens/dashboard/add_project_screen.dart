@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets.dart';
+import '../../widgets/widgets.dart';
 
 class AddProjectScreen extends StatefulWidget {
   const AddProjectScreen({super.key});

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dashboard/screens/screens.dart';
 import 'screens/screens.dart';
 
 void main() {
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }

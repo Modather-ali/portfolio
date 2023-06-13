@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/widgets.dart';
-import 'screens.dart';
+import '../../../widgets/widgets.dart';
+import '../screens.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({super.key});

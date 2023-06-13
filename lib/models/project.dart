@@ -9,6 +9,7 @@ Project projectFromJson(String str) => Project.fromJson(json.decode(str));
 String projectToJson(Project data) => json.encode(data.toJson());
 
 class Project {
+  final String id;
   final String name;
   final String description;
   final String codeUrl;
@@ -17,6 +18,7 @@ class Project {
   final List<String> usedSkills;
 
   Project({
+    required this.id,
     required this.name,
     required this.description,
     required this.codeUrl,
@@ -26,6 +28,7 @@ class Project {
   });
 
   Project copyWith({
+    String? id,
     String? name,
     String? description,
     String? codeUrl,
@@ -34,6 +37,7 @@ class Project {
     List<String>? usedSkills,
   }) =>
       Project(
+        id: id ?? this.id,
         name: name ?? this.name,
         description: description ?? this.description,
         codeUrl: codeUrl ?? this.codeUrl,
@@ -43,6 +47,7 @@ class Project {
       );
 
   factory Project.fromJson(Map<String, dynamic> json) => Project(
+        id: json["id"],
         name: json["name"],
         description: json["description"],
         codeUrl: json["code_url"],
@@ -52,6 +57,7 @@ class Project {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "description": description,
         "code_url": codeUrl,

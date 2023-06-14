@@ -10,7 +10,7 @@ export 'drawer_item.dart';
 export 'dynamic_app_bar.dart';
 export 'image_container.dart';
 export 'image_picker_button.dart';
-export 'image_viewer.dart';
+export '../screens/user/image_viewer.dart';
 export 'project_container.dart';
 export 'project_images_builder.dart';
 export 'projects_builder.dart';

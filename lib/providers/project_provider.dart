@@ -5,10 +5,15 @@ import '../shared/shared.dart';
 class ProjectProvider extends ChangeNotifier {
   List<Project> projects = [];
   final FirebaseDatabase _firebaseDatabase = FirebaseDatabase();
-  init() async {
-    projects = await _firebaseDatabase.getProjectsData();
-    Logger.print('${projects.length}');
-    notifyListeners();
+  Future<bool> init() async {
+    try {
+      projects = await _firebaseDatabase.getProjectsData();
+      Logger.print('${projects.length}');
+      notifyListeners();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future addProject(Project project) async {

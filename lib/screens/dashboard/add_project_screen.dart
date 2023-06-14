@@ -171,6 +171,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
           description: _desc.text,
           codeUrl: _codeUrl.text,
           appUrl: _appUrl.text,
+          coverImage: _selectedCoverImage,
           images: images,
           usedSkills: _selectedSkills,
         );

@@ -8,3 +8,4 @@ export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:provider/provider.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:permission_handler/permission_handler.dart';
+export 'package:cached_network_image/cached_network_image.dart';

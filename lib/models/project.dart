@@ -14,6 +14,7 @@ class Project {
   final String description;
   final String codeUrl;
   final String appUrl;
+  final int coverImage;
   final List<String> images;
   final List<String> usedSkills;
 
@@ -23,6 +24,7 @@ class Project {
     required this.description,
     required this.codeUrl,
     required this.appUrl,
+    required this.coverImage,
     required this.images,
     required this.usedSkills,
   });
@@ -33,6 +35,7 @@ class Project {
     String? description,
     String? codeUrl,
     String? appUrl,
+    int? coverImage,
     List<String>? images,
     List<String>? usedSkills,
   }) =>
@@ -42,6 +45,7 @@ class Project {
         description: description ?? this.description,
         codeUrl: codeUrl ?? this.codeUrl,
         appUrl: appUrl ?? this.appUrl,
+        coverImage: coverImage ?? this.coverImage,
         images: images ?? this.images,
         usedSkills: usedSkills ?? this.usedSkills,
       );
@@ -52,6 +56,7 @@ class Project {
         description: json["description"],
         codeUrl: json["code_url"],
         appUrl: json["app_url"],
+        coverImage: json["cover_image"] ?? 0,
         images: List<String>.from(json["images"].map((x) => x)),
         usedSkills: List<String>.from(json["used_skills"].map((x) => x)),
       );
@@ -62,6 +67,7 @@ class Project {
         "description": description,
         "code_url": codeUrl,
         "app_url": appUrl,
+        "cover_image": coverImage,
         "images": List<dynamic>.from(images.map((x) => x)),
         "used_skills": List<dynamic>.from(usedSkills.map((x) => x)),
       };

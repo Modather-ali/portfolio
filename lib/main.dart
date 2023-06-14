@@ -51,10 +51,14 @@ class MyApp extends StatelessWidget {
           return FutureBuilder(
             future: projectProvider.init(),
             builder: (_, asyncSnapshot) {
-              // if (asyncSnapshot.hasData) {
-              return const HomeScreen();
-              // }
-              // return const Center(child: CircularProgressIndicator());
+              if (asyncSnapshot.data != null) {
+                return const HomeScreen();
+              }
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
             },
           );
         }),

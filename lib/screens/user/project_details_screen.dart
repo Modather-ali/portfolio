@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/models.dart';
+import '../../services/uri_luncher.dart';
 import '../../widgets/widgets.dart';
 
 class ProjectDetailsScreen extends StatelessWidget {
@@ -50,13 +51,17 @@ class ProjectDetailsScreen extends StatelessWidget {
               children: [
                 const Spacer(),
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    UrlLuncher.lunchUrl(project.appUrl);
+                  },
                   icon: const Icon(Icons.android),
                   label: const Text('Try the app'),
                 ),
                 const Spacer(),
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    UrlLuncher.lunchUrl(project.codeUrl);
+                  },
                   icon: const Icon(Icons.code),
                   label: const Text('View Source code'),
                 ),

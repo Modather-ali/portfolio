@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class ImageViewer extends StatefulWidget {
@@ -17,13 +15,17 @@ class ImageViewer extends StatefulWidget {
 
 class _ImageViewerState extends State<ImageViewer> {
   final PageController _pageController = PageController();
-  @override
-  void initState() {
-    Timer.periodic(const Duration(milliseconds: 1), (timer) {
-      _pageController.jumpToPage(widget.currentImageIndex);
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   Timer.periodic(const Duration(milliseconds: 1), (timer) {
+  //     _pageController.animateToPage(
+  //       widget.currentImageIndex,
+  //       duration: const Duration(seconds: 1),
+  //       curve: Curves.bounceIn,
+  //     );
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {

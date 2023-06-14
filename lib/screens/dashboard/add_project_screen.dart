@@ -5,6 +5,7 @@ import '../../models/models.dart';
 import '../../services/servers.dart';
 import '../../shared/packages.dart';
 import '../../widgets/widgets.dart';
+import '../screens.dart';
 
 class AddProjectScreen extends StatefulWidget {
   const AddProjectScreen({super.key});
@@ -48,7 +49,9 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: _saveProject,
+            onPressed: () {
+              _saveProject(context);
+            },
             icon: Icon(
               Icons.save,
               color: Theme.of(context).primaryColor,
@@ -154,7 +157,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
     );
   }
 
-  Future<void> _saveProject() async {
+  Future<void> _saveProject(BuildContext context) async {
     List<String> images = [];
     if (_formKey.currentState!.validate()) {
       if (_projectImages.isNotEmpty) {
@@ -174,5 +177,10 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
         await _projectProvider.addProject(_project);
       }
     }
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const MainScreen(),
+        ),
+        (route) => false);
   }
 }

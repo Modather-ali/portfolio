@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'providers/providers.dart';
 import 'screens/screens.dart';
-import 'shared/packages.dart';
 import 'shared/shared.dart';
 
 void main() async {
@@ -53,7 +52,7 @@ class MyApp extends StatelessWidget {
             future: projectProvider.init(),
             builder: (_, asyncSnapshot) {
               // if (asyncSnapshot.hasData) {
-              return const MainScreen();
+              return const HomeScreen();
               // }
               // return const Center(child: CircularProgressIndicator());
             },

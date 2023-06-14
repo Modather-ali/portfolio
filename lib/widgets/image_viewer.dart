@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class ImageViewer extends StatefulWidget {
   final int currentImageIndex;
+  final List<String> images;
   const ImageViewer({
     super.key,
     this.currentImageIndex = 0,
+    required this.images,
   });
 
   @override
@@ -30,9 +32,9 @@ class _ImageViewerState extends State<ImageViewer> {
       body: PageView.builder(
         scrollDirection: Axis.horizontal,
         controller: _pageController,
-        itemCount: 5,
+        itemCount: widget.images.length,
         itemBuilder: (context, index) =>
-            Center(child: Image.asset('assets/images/test_img.jpg')),
+            Center(child: Image.network(widget.images[index])),
       ),
     );
   }

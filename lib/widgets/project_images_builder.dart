@@ -33,8 +33,10 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
               return InkWell(
                 onTap: () {
                   Navigator.of(context).push(CupertinoPageRoute(
-                    builder: (context) =>
-                        ImageViewer(currentImageIndex: _imageIndex),
+                    builder: (context) => ImageViewer(
+                      currentImageIndex: _imageIndex,
+                      images: widget.images,
+                    ),
                   ));
                 },
                 child: AspectRatio(
@@ -42,7 +44,7 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(widget.images[index]),
+                        image: NetworkImage(widget.images[index]),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -56,7 +58,7 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: AnimatedDots(
             currentIndex: _imageIndex,
-            itemCount: 5,
+            itemCount: widget.images.length,
           ),
         ),
       ],

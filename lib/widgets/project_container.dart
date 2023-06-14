@@ -22,8 +22,8 @@ class ProjectContainer extends StatelessWidget {
                   margin: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/test_img.jpg'),
+                    image: DecorationImage(
+                      image: NetworkImage(project.images[0]),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -34,7 +34,7 @@ class ProjectContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Text(
-                  "Project Name",
+                  project.name,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),

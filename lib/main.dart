@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'providers/providers.dart';
 import 'screens/screens.dart';
 import 'shared/packages.dart';
+import 'shared/shared.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,9 +44,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Modather\'s Portfolio',
         theme: ThemeData(
-          useMaterial3: true,
-          primarySwatch: Colors.blue,
-        ),
+            useMaterial3: true,
+            colorScheme: const ColorScheme.light(
+              primary: Constants.primaryColor,
+            )),
         home: Consumer<ProjectProvider>(builder: (_, projectProvider, child) {
           return FutureBuilder(
             future: projectProvider.init(),

@@ -21,7 +21,8 @@ class ProjectsBuilder extends StatelessWidget {
           project: projects[index],
           onTap: () {
             Navigator.of(context).push(CupertinoPageRoute(
-                builder: (context) => const ProjectDetailsScreen()));
+                builder: (context) =>
+                    ProjectDetailsScreen(project: projects[index])));
           },
         );
       },

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'widgets.dart';
 
 class ProjectImagesBuilder extends StatefulWidget {
-  const ProjectImagesBuilder({super.key});
+  final List<String> images;
+  const ProjectImagesBuilder({super.key, required this.images});
 
   @override
   State<ProjectImagesBuilder> createState() => _ProjectImagesBuilderState();
@@ -21,15 +22,15 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
       children: [
         AspectRatio(
           aspectRatio: 16 / 9,
-          child: PageView(
+          child: PageView.builder(
             scrollDirection: Axis.horizontal,
             controller: _pageController,
             onPageChanged: (index) {
               setState(() => _imageIndex = index);
             },
-            children: List.generate(
-              5,
-              (index) => InkWell(
+            itemCount: widget.images.length,
+            itemBuilder: (context, index) {
+              return InkWell(
                 onTap: () {
                   Navigator.of(context).push(CupertinoPageRoute(
                     builder: (context) =>
@@ -39,16 +40,16 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
                 child: AspectRatio(
                   aspectRatio: 16 / 9,
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/test_img.jpg'),
+                        image: AssetImage(widget.images[index]),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
         ),
         Padding(

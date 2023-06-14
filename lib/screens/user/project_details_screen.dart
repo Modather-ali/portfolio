@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
 
+import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
-class ProjectDetailsScreen extends StatefulWidget {
-  const ProjectDetailsScreen({super.key});
+class ProjectDetailsScreen extends StatelessWidget {
+  final Project project;
+  const ProjectDetailsScreen({
+    super.key,
+    required this.project,
+  });
 
-  @override
-  State<ProjectDetailsScreen> createState() => _ProjectDetailsScreenState();
-}
-
-class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Project Name"),
+        title: Text(project.name),
         centerTitle: true,
       ),
       body: Column(
         children: [
-          const ProjectImagesBuilder(),
+          ProjectImagesBuilder(images: project.images),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Long text, ' * 10,
+              project.description,
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ),
-          // const Spacer(),
           Text(
             "Used Skills",
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -36,17 +35,15 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
           ),
           Wrap(
             children: [
-              for (var i = 0; i < 5; i++)
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
+              for (String skill in project.usedSkills)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Chip(
-                    label: Text('Flutter'),
-                    // backgroundColor: Theme.of(context).primaryColor!,
+                    label: Text(skill),
                   ),
                 ),
             ],
           ),
-          // const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(

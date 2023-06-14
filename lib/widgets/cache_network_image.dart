@@ -32,7 +32,7 @@ class CacheNetworkImage extends StatelessWidget {
       imageBuilder: (context, imageProvider) {
         return Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            // borderRadius: BorderRadius.circular(15),
             image: DecorationImage(
               image: imageProvider,
               fit: BoxFit.contain,

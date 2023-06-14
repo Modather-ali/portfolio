@@ -41,14 +41,7 @@ class _ProjectImagesBuilderState extends State<ProjectImagesBuilder> {
                 },
                 child: AspectRatio(
                   aspectRatio: 16 / 9,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(widget.images[index]),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  child: CacheNetworkImage(imageUrl: widget.images[index]),
                 ),
               );
             },

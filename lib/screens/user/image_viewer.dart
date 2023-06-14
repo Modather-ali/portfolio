@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/widgets.dart';
+
 class ImageViewer extends StatefulWidget {
   final int currentImageIndex;
   final List<String> images;
@@ -36,7 +38,7 @@ class _ImageViewerState extends State<ImageViewer> {
         controller: _pageController,
         itemCount: widget.images.length,
         itemBuilder: (context, index) =>
-            Center(child: Image.network(widget.images[index])),
+            Center(child: CacheNetworkImage(imageUrl: widget.images[index])),
       ),
     );
   }

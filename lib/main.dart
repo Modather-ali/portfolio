@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             future: projectProvider.init(),
             builder: (_, asyncSnapshot) {
               if (asyncSnapshot.data != null) {
-                return const HomeScreen();
+                return const MainScreen();
               }
               return const Scaffold(
                 body: Center(

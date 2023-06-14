@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/widgets.dart';
@@ -39,13 +38,13 @@ class AboutMeScreen extends StatelessWidget {
               ),
             ],
           ),
-          Center(
-            child: ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(CupertinoIcons.doc_text_viewfinder),
-              label: const Text("View My Resume"),
-            ),
-          ),
+          // Center(
+          //   child: ElevatedButton.icon(
+          //     onPressed: () {},
+          //     icon: const Icon(CupertinoIcons.doc_text_viewfinder),
+          //     label: const Text("View My Resume"),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
             child: Text(
@@ -66,6 +65,7 @@ class AboutMeScreen extends StatelessWidget {
           const SkillWidget(title: 'Firebase', value: 75),
           const SkillWidget(title: 'Git', value: 80),
           const SkillWidget(title: 'APIs', value: 90),
+          const SkillWidget(title: 'SQL Lite', value: 60),
           const ContactMeBuilder(),
         ],
       ),

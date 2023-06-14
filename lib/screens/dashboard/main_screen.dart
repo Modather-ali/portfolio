@@ -14,19 +14,31 @@ class MainScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Dashboard'),
           centerTitle: true,
-          bottom: const TabBar(
-            tabs: [
-              Text("Projects"),
-              Text("Contact Info"),
-            ],
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
+            icon: Icon(
+              Icons.home,
+              color: Theme.of(context).primaryColor,
+            ),
           ),
+          // bottom: const TabBar(
+          //   tabs: [
+          //     Text("Projects"),
+          //     Text("Contact Info"),
+          //   ],
+          // ),
         ),
-        body: const TabBarView(
-          children: [
-            ProjectsScreen(),
-            ContactInfoScreen(),
-          ],
-        ),
+        body: const ProjectsScreen(),
+
+        //  const TabBarView(
+        //   children: [
+        //     ProjectsScreen(),
+        //     ContactInfoScreen(),
+        //   ],
+        // ),
       ),
     );
   }

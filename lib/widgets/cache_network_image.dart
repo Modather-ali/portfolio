@@ -4,7 +4,12 @@ import '../shared/packages.dart';
 
 class CacheNetworkImage extends StatelessWidget {
   final String imageUrl;
-  const CacheNetworkImage({super.key, required this.imageUrl});
+  final double radius;
+  const CacheNetworkImage({
+    super.key,
+    required this.imageUrl,
+    this.radius = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +37,10 @@ class CacheNetworkImage extends StatelessWidget {
       imageBuilder: (context, imageProvider) {
         return Container(
           decoration: BoxDecoration(
-            // borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(radius),
             image: DecorationImage(
               image: imageProvider,
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
             ),
           ),
         );

@@ -18,22 +18,15 @@ class ProjectContainer extends StatelessWidget {
           child: Column(
             children: [
               AspectRatio(
-                  aspectRatio: 16 / 9,
+                aspectRatio: 16 / 9,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: CacheNetworkImage(
-                      imageUrl: project.images[project.coverImage])
-                  // Container(
-                  //   margin: const EdgeInsets.all(5),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(15),
-                  //     image: DecorationImage(
-                  //       image: NetworkImage(project.images[0]),
-                  //       fit: BoxFit.cover,
-                  //     ),
-                  //   ),
-                  //   // height: 250,
-                  //   // width: double.infinity,
-                  // ),
+                    imageUrl: project.images[project.coverImage],
+                    radius: 15,
                   ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Text(

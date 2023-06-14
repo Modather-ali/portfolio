@@ -7,9 +7,14 @@ import '../../models/models.dart';
 import '../../providers/providers.dart';
 import '../screens.dart';
 
-class ProjectsScreen extends StatelessWidget {
+class ProjectsScreen extends StatefulWidget {
   const ProjectsScreen({super.key});
 
+  @override
+  State<ProjectsScreen> createState() => _ProjectsScreenState();
+}
+
+class _ProjectsScreenState extends State<ProjectsScreen> {
   @override
   Widget build(BuildContext context) {
     List<Project> projects = context.read<ProjectProvider>().projects;
@@ -41,6 +46,7 @@ class ProjectsScreen extends StatelessWidget {
                                 .read<ProjectProvider>()
                                 .deleteProject(projects[index]);
                             Navigator.pop(context);
+                            setState(() {});
                           },
                           child: const Text('Yes')),
                       TextButton(

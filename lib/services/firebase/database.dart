@@ -1,5 +1,5 @@
 import '../../models/models.dart';
-import '../../shared/packages.dart';
+import '../../shared/shared.dart';
 
 class FirebaseDatabase {
   final CollectionReference<Map<String, dynamic>> _projects =
@@ -14,7 +14,7 @@ class FirebaseDatabase {
         listOfProjects.add(Project.fromJson(element.data()));
       }
     } catch (e) {
-      print("error in get date: $e");
+      Logger.print("error in get date: $e");
     }
     return listOfProjects;
   }
@@ -24,9 +24,8 @@ class FirebaseDatabase {
       await _projects.doc(project.id).set(project.toJson());
       return true;
     } catch (e) {
-      if (kDebugMode) {
-        print("Error in adding data: $e");
-      }
+      Logger.print("Error in adding data: $e");
+
       return false;
     }
   }
@@ -36,9 +35,8 @@ class FirebaseDatabase {
       await _projects.doc(project.id).set(project.toJson());
       return true;
     } catch (e) {
-      if (kDebugMode) {
-        print("Error in update : $e");
-      }
+      Logger.print("Error in update : $e");
+
       return false;
     }
   }
@@ -48,9 +46,8 @@ class FirebaseDatabase {
       await _projects.doc(id).delete();
       return true;
     } catch (e) {
-      if (kDebugMode) {
-        print("Error in delete: $e");
-      }
+      Logger.print("Error in delete: $e");
+
       return false;
     }
   }

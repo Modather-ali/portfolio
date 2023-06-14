@@ -10,4 +10,10 @@ class ProjectProvider extends ChangeNotifier {
     projects = await _firebaseDatabase.getProjectsData();
     notifyListeners();
   }
+
+  Future addProject(Project project) async {
+    await _firebaseDatabase.addNewProject(project);
+    projects.add(project);
+    notifyListeners();
+  }
 }

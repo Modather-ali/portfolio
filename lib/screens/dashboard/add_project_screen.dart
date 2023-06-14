@@ -48,7 +48,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: _onSave,
+            onPressed: _saveProject,
             icon: Icon(
               Icons.save,
               color: Theme.of(context).primaryColor,
@@ -96,9 +96,8 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                           imageQuality: 75,
                         );
                         if (selectedImage != null) {
-                          setState(() {
-                            _projectImages.add(selectedImage.path);
-                          });
+                          setState(
+                              () => _projectImages.add(selectedImage.path));
                         }
                       }
                     },
@@ -155,18 +154,25 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
     );
   }
 
-  Future<void> _onSave() async {
+  Future<void> _saveProject() async {
+    List<String> images = [];
     if (_formKey.currentState!.validate()) {
-      _project = Project(
-        id: 'project-${_name.text.hashCode}-${_desc.text.hashCode}',
-        name: _name.text,
-        description: _desc.text,
-        codeUrl: _codeUrl.text,
-        appUrl: _appUrl.text,
-        images: _projectImages,
-        usedSkills: _selectedSkills,
-      );
-      _firebaseDatabase.addNewProject(_project);
+      if (_projectImages.isNotEmpty) {
+        images = await _fireStorage.loadMultiFileToFireStorage(
+          filesPath: _projectImages,
+          folderName: _name.text,
+        );
+        _project = Project(
+          id: 'project-${_name.text.hashCode}-${_desc.text.hashCode}',
+          name: _name.text,
+          description: _desc.text,
+          codeUrl: _codeUrl.text,
+          appUrl: _appUrl.text,
+          images: images,
+          usedSkills: _selectedSkills,
+        );
+        await _projectProvider.addProject(_project);
+      }
     }
   }
 }

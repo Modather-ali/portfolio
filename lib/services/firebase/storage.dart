@@ -1,8 +1,26 @@
-import '../../shared/packages.dart';
+import '../../shared/shared.dart';
 
 class FireStorage {
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-  Future<String> loadFileToFireStorage({
+
+  Future<List<String>> loadMultiFileToFireStorage({
+    required List<String> filesPath,
+    required String folderName,
+  }) async {
+    List<String> urls = [];
+
+    for (var path in filesPath) {
+      String? url = await loadFileToFireStorage(
+        localFilePath: path,
+        folderName: folderName,
+      );
+      urls.add(url!);
+    }
+
+    return urls;
+  }
+
+  Future<String?> loadFileToFireStorage({
     required String localFilePath,
     required String folderName,
   }) async {
@@ -16,13 +34,11 @@ class FireStorage {
 
       await storageRef.putFile(file);
       loadedFileUrl = await storageRef.getDownloadURL();
+      return loadedFileUrl;
     } catch (e) {
-      if (kDebugMode) {
-        print('Error in load file: $e');
-      }
+      Logger.print('load file error $e');
+      return null;
     }
-
-    return loadedFileUrl;
   }
 
   Future<bool> deleteFileFromFireStorage({required String fileURL}) async {
@@ -31,7 +47,7 @@ class FireStorage {
       return true;
     } catch (e) {
       if (kDebugMode) {
-        print('Error in delete file: $e');
+        Logger.print('Error in delete file: $e');
       }
       return false;
     }

@@ -21,4 +21,10 @@ class ProjectProvider extends ChangeNotifier {
     projects.add(project);
     notifyListeners();
   }
+
+  Future deleteProject(Project project) async {
+    await _firebaseDatabase.deleteProject(project.id);
+    projects.remove(project);
+    notifyListeners();
+  }
 }

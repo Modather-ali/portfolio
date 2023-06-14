@@ -2,6 +2,31 @@
     package="dev.modather.portfolio">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+ <queries>
+  <!-- If your app opens https URLs -->
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="https" />
+  </intent>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="tel" />
+  </intent>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="mailto" />
+  </intent>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="whatsapp" />
+  </intent>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="market" />
+  </intent>
+</queries>
+
+
    <application
         android:label="portfolio"
         android:name="${applicationName}"

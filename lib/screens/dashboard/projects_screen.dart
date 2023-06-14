@@ -28,6 +28,32 @@ class ProjectsScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return ProjectContainer(
             project: projects[index],
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('Delete this project'),
+                    actions: [
+                      TextButton(
+                          onPressed: () async {
+                            await context
+                                .read<ProjectProvider>()
+                                .deleteProject(projects[index]);
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Yes')),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('back'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           );
         },
       ),

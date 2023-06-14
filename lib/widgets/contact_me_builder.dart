@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../services/uri_luncher.dart';
+import '../shared/constants.dart';
 import 'widgets.dart';
 
 class ContactMeBuilder extends StatelessWidget {
@@ -18,27 +20,37 @@ class ContactMeBuilder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ContactButton(
-                onPressed: () {},
+                onPressed: () {
+                  UrlLuncher.lunchUrl(Constants.githubUrl);
+                },
                 icon: FontAwesomeIcons.github,
                 color: Colors.black,
               ),
               ContactButton(
-                onPressed: () {},
+                onPressed: () {
+                  UrlLuncher.lunchUrl(Constants.email);
+                },
                 icon: Icons.email,
                 color: Colors.grey,
               ),
               ContactButton(
-                onPressed: () {},
+                onPressed: () {
+                  UrlLuncher.lunchUrl(Constants.whatsappUrl);
+                },
                 icon: FontAwesomeIcons.whatsapp,
                 color: Colors.green,
               ),
               ContactButton(
-                onPressed: () {},
+                onPressed: () {
+                  UrlLuncher.lunchUrl(Constants.linkedinInUrl);
+                },
                 icon: FontAwesomeIcons.linkedinIn,
                 color: Colors.blueGrey,
               ),
               ContactButton(
-                onPressed: () {},
+                onPressed: () {
+                  UrlLuncher.lunchUrl(Constants.telegramUrl);
+                },
                 icon: FontAwesomeIcons.telegram,
                 color: Colors.blue,
               ),
